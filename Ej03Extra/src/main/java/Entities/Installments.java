@@ -3,34 +3,43 @@ package Entities;
 import java.time.LocalDate;
 
 public class Installments {
-    private InsurancePolicy associatedPolicy;
-    private int policyNumber; //"número de cuota" ex 11/200?
-    private int policyAmount;
+    private int associatedPolicy;
+    private int totalInstallmentNumber;
+    private int actualInstallmentNumber; //"número de cuota" ej 11/200?
+    private int installmentAmount;
     private boolean isPaid;
     private LocalDate dueDate;
 
-    public InsurancePolicy getAssociatedPolicy() {
+    public int getAssociatedPolicy() {
         return associatedPolicy;
     }
 
-    public void setAssociatedPolicy(InsurancePolicy associatedPolicy) {
+    public void setAssociatedPolicy(int associatedPolicy) {
         this.associatedPolicy = associatedPolicy;
     }
 
-    public int getPolicyNumber() {
-        return policyNumber;
+    public int getTotalInstallmentNumber() {
+        return totalInstallmentNumber;
     }
 
-    public void setPolicyNumber(int policyNumber) {
-        this.policyNumber = policyNumber;
+    public void setTotalInstallmentNumber(int totalInstallmentNumber) {
+        this.totalInstallmentNumber = totalInstallmentNumber;
     }
 
-    public int getPolicyAmount() {
-        return policyAmount;
+    public int getActualInstallmentNumber() {
+        return actualInstallmentNumber;
     }
 
-    public void setPolicyAmount(int policyAmount) {
-        this.policyAmount = policyAmount;
+    public void setActualInstallmentNumber(int actualInstallmentNumber) {
+        this.actualInstallmentNumber = actualInstallmentNumber;
+    }
+
+    public int getInstallmentAmount() {
+        return installmentAmount;
+    }
+
+    public void setInstallmentAmount(int installmentAmount) {
+        this.installmentAmount = installmentAmount;
     }
 
     public boolean isPaid() {
@@ -47,6 +56,19 @@ public class Installments {
 
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Installments{" +
+                "associatedPolicy=" + associatedPolicy +
+                ", totalInstallmentNumber=" + totalInstallmentNumber +
+                ", actualInstallmentNumber=" + actualInstallmentNumber +
+                ", installmentAmount=" + installmentAmount +
+                ", isPaid=" + isPaid +
+                ", dueDate=" + dueDate +
+                '}';
     }
 }
 

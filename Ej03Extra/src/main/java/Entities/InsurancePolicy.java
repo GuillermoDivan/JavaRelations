@@ -1,16 +1,18 @@
 package Entities;
-
 import java.time.LocalDate;
+import java.util.ArrayList;
+/*As the business logic asks, Client, Vehicle and installmentsList are added as attributes, in order to
+keep the access to the information centralized on the service's policy class. Furthermore, boolean
+active was added. */
 
 public class InsurancePolicy {
-    //@OneToOne ? En qué momento vimos sql?
     private Client client;
-    //@OneToOne
     private Vehicle vehicle;
+    private ArrayList<Installments> installmentsList;
     private int policyNumber;
     private LocalDate startDate;
     private LocalDate endDate;
-    private int installmentsAmount;
+    private int totalInstallmentsNumber;
     private String paymentMode;
     private double totalAssuredAmount;
     private boolean includesHail;
@@ -32,6 +34,14 @@ public class InsurancePolicy {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public ArrayList<Installments> getInstallmentsList() {
+        return installmentsList;
+    }
+
+    public void setInstallmentsList(ArrayList<Installments> installmentsList) {
+        this.installmentsList = installmentsList;
     }
 
     public int getPolicyNumber() {
@@ -58,12 +68,12 @@ public class InsurancePolicy {
         this.endDate = endDate;
     }
 
-    public int getInstallmentsAmount() {
-        return installmentsAmount;
+    public int getTotalInstallmentsNumber() {
+        return totalInstallmentsNumber;
     }
 
-    public void setInstallmentsAmount(int installmentsAmount) {
-        this.installmentsAmount = installmentsAmount;
+    public void setTotalInstallmentsNumber(int totalInstallmentsNumber) {
+        this.totalInstallmentsNumber = totalInstallmentsNumber;
     }
 
     public String getPaymentMode() {
@@ -119,15 +129,17 @@ public class InsurancePolicy {
         return "InsurancePolicy{" +
                 "client=" + client +
                 ", vehicle=" + vehicle +
+                ", installments=" + installmentsList +
                 ", policyNumber=" + policyNumber +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", installmentsAmount=" + installmentsAmount +
+                ", installmentsAmount=" + totalInstallmentsNumber+
                 ", paymentMode='" + paymentMode + '\'' +
                 ", totalAssuredAmount=" + totalAssuredAmount +
                 ", includesHail=" + includesHail +
                 ", totalAssuredHail=" + totalAssuredHail +
                 ", insuranceCoverageType='" + insuranceCoverageType + '\'' +
+                ", active=" + active +
                 '}';
     }
 }

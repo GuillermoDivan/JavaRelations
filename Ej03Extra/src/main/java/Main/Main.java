@@ -22,15 +22,22 @@ requerimientos arriba descriptos. Modelando clases con atributos y sus correspon
 relaciones.*/
 package Main;
 
-import Services.ClientService;
+import Services.*;
+import Entities.*;
+
+import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
-        ClientService service = new ClientService();
-        service.addClient();
-        service.reactivateClient();
-        service.deleteClient();
-        service.deleteClient();
-        service.reactivateClient();
+
+        ClientService cs = new ClientService();
+        Client client = cs.addClient();
+        VehicleService vs = new VehicleService();
+        Vehicle vehicle = vs.addVehicle();
+        InsurancePolicyService policyService = new InsurancePolicyService();
+        policyService.addInsurancePolicy(client, vehicle);
+        policyService.showPolicyList();
+
+
     }
 }

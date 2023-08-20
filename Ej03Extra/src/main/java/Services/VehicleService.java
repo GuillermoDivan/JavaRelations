@@ -8,7 +8,10 @@ public class VehicleService {
     HashMap<String, Vehicle> VehicleList = new HashMap<String, Vehicle>();
     Scanner input = new Scanner(System.in).useDelimiter("\n");
 
-    public void addVehicle(){
+    /*addVehicle method charges all attributes to the object and puts it as a value of the hasmap
+ ClientList. The key in each case is the DNI. Active attribute always sets active when a client is added.
+ */
+    public Vehicle addVehicle(){
         Vehicle v1 = new Vehicle();
         String dni = "";
         System.out.println("Ingrese la patente del vehículo.");
@@ -29,8 +32,10 @@ public class VehicleService {
         System.out.println("Ingrese el tipo de vehículo (camioneta, sedán, etc).");
         v1.setType(input.next());
         VehicleList.put(plate, v1);
+        return v1;
     }
 
+    /*Two show methods will be needed: one for the complete list and other for a punctual vehicle data.*/
     public void showVehicleList(){
         System.out.println(VehicleList.toString());
     }
@@ -40,6 +45,7 @@ public class VehicleService {
         System.out.println(v1.toString());
     }
 
+    /*Update only available for salesman.*/
     public boolean updateVehicle(){
         Vehicle v1 = lookForVehicle();
         System.out.println("¡Vehículo " +v1.getLicensePlate() + " hallado exitosamente! Elija el campo que " +
@@ -60,6 +66,7 @@ public class VehicleService {
         return true;
     }
 
+    /*Desprendido en cadena de borrar póliza.*/
     public boolean deleteVehicle() {
         Vehicle v1 = lookForVehicle();
         if (v1 != null && v1.isActive()) {
@@ -74,6 +81,8 @@ public class VehicleService {
         return false;
     }
 
+    /*ReactivateVehicle is needed in order to ease the process if the same vehicle is loaded after
+    its ensurance policy is turned off.*/
     public boolean reactivateVehicle(){
         Vehicle v1 = lookForVehicle();
         if (v1 != null && !v1.isActive()) {
@@ -85,13 +94,13 @@ public class VehicleService {
     }
 
     private Vehicle lookForVehicle(){
-        System.out.println("Ingrese el dni del cliente que desea hallar.");
+        System.out.println("Ingrese la patente del vehículo que desea hallar.");
         String searchedPlate = input.next();
         if (VehicleList.containsKey(searchedPlate)) {
             Vehicle v1 = VehicleList.get(searchedPlate);
             return v1;
         } else {
-            System.out.println("El dni buscado no se encontró en la base de datos.");
+            System.out.println("El vehículo buscado no se encontró en la base de datos.");
             return null;
         }
     }

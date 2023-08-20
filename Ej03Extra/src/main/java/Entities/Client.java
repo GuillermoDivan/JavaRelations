@@ -1,5 +1,6 @@
 package Entities;
-
+/*Besides the requested attributes, boolean active was added in order to make a logical delete
+without compromising database registers.*/
 public class Client {
 
     private String name;
@@ -81,7 +82,3 @@ public class Client {
                 '}';
     }
 }
-
-/*a. Gestión Integral de clientes. En este módulo vamos a registrar la información personal de
-cada cliente que posea pólizas en nuestra empresa. Nombre y apellido, documento, mail,
-domicilio, teléfono.*/

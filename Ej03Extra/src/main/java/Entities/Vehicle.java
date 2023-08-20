@@ -1,5 +1,5 @@
 package Entities;
-
+/*Two attributes were added: licensePlate, in order to use as id, and boolean active.*/
 public class Vehicle {
     private String licensePlate;
     private String brand;
